@@ -1,4 +1,4 @@
-#Event planner
+# :date: Event planner
 
 This application helps the user to plan his or her events to particular day.So user can list down any number of events to a relevent day with a time.User can also update or delete an exsisiting event too.
 
