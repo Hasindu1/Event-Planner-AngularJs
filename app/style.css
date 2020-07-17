@@ -1,0 +1,28 @@
+.datepickerdemoCalendar {
+}
+  .datepickerdemoCalendar label {
+    font-size: x-small; }
+.item{
+  flex:1;
+}
+.item:last-child{
+  flex:2;
+}
+.form-item{
+  align-self: flex-start;
+}
+.item-2{
+  padding-top: 130px;
+}
+.event-list-items{
+  width: 250px;
+}
+.trash-icon{
+  background-color: blue;
+}
+.event-list-item-time{
+  max-width:70px;
+}
+.count-down-item{
+  max-width:40px;
+}

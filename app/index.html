@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8">
+  <title>Online Events Organizer</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic"><link rel='stylesheet' href='https://gitcdn.xyz/cdn/angular/bower-material/v1.1.22-rc.0/angular-material.css'>
+  <link rel='stylesheet' href='https://material.angularjs.org/1.1.22-rc.0/docs.css'><link rel="stylesheet" href="./style.css">
+
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet"
+        href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- Popper JS -->
+  <script
+          src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body >
+
+<md-content ng-controller="MainController as ctrl" layout="column" layout-gt-sm="row" layout-padding="" ng-cloak="" class="datepickerdemoCalendar" ng-app="EventApp">
+  <div class="item" layout="column" flex-order="0" flex-order-gt-sm="1">
+    <md-subheader><h2 class="text-bold">Chose a Date to view events</h2></md-subheader>
+    <md-calendar ng-click="displayEventList(ctrl.endDate | date:shortDate)" ng-model="ctrl.endDate"></md-calendar>
+  </div>
+  <div class="item item-2 text-center" layout="column" flex-order="1" flex-order-gt-sm="2" style="width:150px">
+    <div>
+      <img class="pr-3"src="./img/calendar.png">
+    <md-subheader><h2 class="font-weight-bold">Selected Date</h2></md-subheader>
+
+
+
+      <h3>{{ctrl.endDate | date:shortDate}}</h3>
+    </div>
+    </div>
+  </div>
+  <div class="container item" flex-order="2" >
+
+    <h1 class="display-3">Online Events Organizer</h1>
+
+<!--    <span class=" d-inline-block mt-5"><input type="text"  class="border border-warning" ng-model="ctrl.countDownDays" readonly><input class="border border-warning" type="text" ng-model="ctrl.countDownHours" readonly></input><input class="border border-warning"  type="text" ng-model="ctrl.countDownMinutes"readonly/><input class="border border-warning" type="text" ng-model="ctrl.countDownSeconds"readonly/></span>-->
+
+  <div class="pt-5">
+    <form class="form-inline  ">
+      <div class="form-group mx-sm-3 mb-2">
+        <label for="event" class="sr-only"></label>
+        <input  ng-model="newEventText" type="text" class="form-control" id="event" placeholder="Enter the event">
+      </div>
+      <span class="md-form form-item">
+      <input type="time" id="input" class="form-control" value="13:00" mdbInput ng-model="newEventTime"/>
+
+    </span>
+      <button type="submit" class="btn btn-primary mb-2 ml-2" ng-click="addEvent(ctrl.endDate | date:shortDate) ; displayEventList(ctrl.endDate | date:shortDate);getNearestEvent();">Add Event</button>
+    </form>
+    <div class="mt-5">
+    <div  ng-repeat="events in relavantEventList track by events.eventId" class="pr-5">
+      <ul class="list-group">
+
+        <span><input type="text"  class="list-group-item d-inline-block event-list-item-time" ng-model="events.eventTime" readonly/> <input type="text" ng-model="events.eventText" class="list-group-item event-list-items d-inline-block " > </input>
+<input type="time" id="input2" class="list-group-item  d-inline-block" value="13:00" mdbInput ng-model="events.eventDateTime"/><button ng-click="updateEvent(events.eventText,events. eventId)" class="btn btn-primary ml-2">Update</button><button ng-click="deleteEvent(events.eventId,ctrl.endDate | date:shortDate)" class=" ml-2 btn btn-danger"><i class="fa fa-trash fa-2x" aria-hidden="true"></i></button> </span>
+
+      </ul>
+
+    </div>
+    </div>
+
+    </div >
+  </div>
+
+
+</md-content>
+
+
+<script src="lib/angular/angular.js"></script>
+<script src="lib/angular-route/angular-route.js"></script>
+<!--Following codes is used to import the app and controller-->
+<script src="app.js"></script>
+<script src="controllers/MainController.js"></script>
+<!---->
+<script src="core/version/version.js"></script>
+<script src="core/version/version-directive.js"></script>
+<script src="core/version/interpolate-filter.js"></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-animate.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-route.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-aria.min.js'></script>
+<script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.7.9/angular-messages.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/t-114/svg-assets-cache.js'></script>
+<script src='https://gitcdn.xyz/cdn/angular/bower-material/v1.1.22-rc.0/angular-material.js'></script>
+
+</body>
+</html>
